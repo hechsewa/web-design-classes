@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Komunikator</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+
+<script>
+function checked() {
+	return document.getElementById("check").checked;
+}
+
+//sprawdza czy wpisano wartość nick i wiadomości
+function checkVal() {
+	if(document.getElementById("nick").value && document.getElementById("mssg").value) {
+	return true;
+	} else return false;
+}
+
+function checkReminder() {
+	if(checked()) {
+		document.getElementById("checkReminder").innerHTML = "Chat working";
+		document.getElementById("checkReminder").style = "color: green";
+		document.getElementById("chatbox").style.background = "#FFF";
+		}
+	else {
+		document.getElementById("checkReminder").innerHTML = "Check the box to chat";
+		document.getElementById("checkReminder").style = "color: red";
+		document.getElementById("chatbox").style.background = "grey";
+	}
+}
+
+//uaktualnia chat o nowe wiadomości - AJAX
+function updateChat() {
+	document.getElementById("chatbox").innerHTML = "";
+	
+	var xmlhttp = new XMLHttpRequest();
+	
+	xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 3 && xmlhttp.status == 200) { //200 = OK, 3 = processing request 
+      if(checked()) {
+		document.getElementById("chatbox").innerHTML = xmlhttp.responseText;	//responseText: get the response data as a string
+		}
+	} if(xmlhttp.readyState == 4) { //4 = request finished and response is ready
+		clearTimeout(xmlHttpTimeout);
+		xmlhttp.open("GET", "chatlog.php", true);
+		xmlhttp.send();
+		}
+	} 
+
+	xmlhttp.open("GET", "chatlog.php", true); 
+	xmlhttp.send();
+	
+	var xmlHttpTimeout=setTimeout(ajaxTimeout,5000);
+	function ajaxTimeout(){
+		xmlhttp.abort();
+		alert("Request timed out");
+	}
+}
+
+//wysyła wiadomość i nick za pomocą AJAX do pliku
+function sendData() {
+	var xmlhttp = new XMLHttpRequest();
+	
+	var nickVal = document.getElementById("nick").value; 
+	var mssgVal = document.getElementById("mssg").value; 
+
+	xmlhttp.open("GET", "chatmssg.php?nick="+nickVal+"&mssg="+mssgVal, true);
+											
+	xmlhttp.send();
+
+	document.getElementById("mssg").value = ""; //czyści pole wiadomosci po wyslaniu
+}
+
+</script>
+
+</head>
+<body>
+<font face='arial'>
+<input type="checkbox" name="check" id="check" onchange="checkReminder(); updateChat();"/>Click to chat<br/>
+
+<textarea rows="10" cols="30" id="chatbox" style="background: grey; color: black; overflow-y: scroll" disabled></textarea><br/> <!-- pole chatu  -->
+Login: <input type="text" name="nick" id="nick" /><br/> <!-- pole do podania loginu -->
+Message: <input type="text" name="message" id="mssg" /><br/> <!-- pole do podania wiadomości -->
+<text id="checkReminder" style="color:red">Check the box to chat</text><br/>
+<button type="button" value="Wyślij" onclick="if (checked() && checkVal()) { sendData(); } else { checkReminder(); alert('Check the box to chat');}">Wyślij</button>
+<button type="button" value="Change" onclick="updateChat();">Update</button>
+
+<font>
+</body>
+</html>

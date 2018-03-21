@@ -1,0 +1,111 @@
+body {
+	background-color: #BDD4E7;
+	height: 100%;
+	position: relative;
+}
+
+* {
+font-family: Calibri, sans-serif;
+}
+
+/* formatowanie tekstu (1) */
+
+h1 {
+	color: #212227;
+	letter-spacing: 10px;
+}
+
+h2 {
+	color: #8693AB;
+}
+
+
+p {
+	color: #637074;
+	text-indent: 15px;
+}
+
+#cont p:first-letter {
+	color: #212227;
+	font-weight: bold;
+	font-size: 17px;
+}
+
+a {
+	color: #637074;
+}
+
+#title {
+	display: block;
+	padding: 10px;
+	text-align: justify;
+	width: 100%;
+	font-size: 30px;
+	font-weight: bold;
+	
+}
+
+/* kontenery div (5) */
+
+#page {
+	max-width: 1000px;
+	margin: auto;
+	height: 100%;
+	padding: 10px 10px;
+	position: relative;
+	background-color: #D0E4EA;
+}
+#cont {
+	margin-right: 165px;
+	padding: 10px;
+}
+
+#menu {
+	width: 150px;
+	top:0;
+	right: 0;
+	position: absolute;
+	height: 100%;
+	padding: 10px 10px;
+	background-color: #DCE8F2;
+}
+
+#menuin {
+	position: fixed;
+}
+
+#menulink {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #555;
+}
+
+#menulink li {
+	width: 150px;
+	
+	text-align: center;
+	text-decoration: none;
+	border-bottom: 1px solid #555;
+	background-color: #AAB9CF;
+}
+
+#menu li:hover{
+	background-color: #D0E4EA;
+}
+
+#menu li:last-child {
+	border-bottom: none;
+}
+
+#menulink li a {
+	display: block;
+	color: #212227;
+	text-decoration: none;
+}
+
+#menu a:hover {
+	color: #AAB9CF;
+	cursor: default;
+}
+

@@ -1,0 +1,62 @@
+body {
+	background-color: #C5F4E0;
+}
+
+* {
+	font-family: Calibri, sans-serif;
+	color: #8F8389;
+}
+/*główny kontener*/
+#page {
+	max-width: 1000px;
+	margin: auto;
+	height: 100%;
+	position: relative;
+	background-color: #E6EFE9;
+}
+/*tytuł*/
+#title {
+	position: static;
+	padding: 20px;
+	text-align: justify;
+	font-size: 30px;
+	font-weight: bold;
+}
+/*kontener na linki*/
+#menulink {
+	list-style-type: none; /*bez kropek*/
+	margin: 0;
+	padding: 0;
+	background-color: #C2EABA;
+	display: block;
+	position: static; /*występuje dokładnie tam gdzie jest w html*/
+	width: 100%;      /*zajmuje 100% szerokości kontenera*/
+	border: 1px solid #8F8389;
+	text-align: center;
+}
+
+/*przyciski*/
+#menulink li{
+	display: inline-block;  /*wyświetla jeden koło drugiego*/
+	border-right: 1px solid #8F8389;
+	border-left: none;
+	padding: 5px 5px;
+}
+
+#menulink li:hover {
+	background-color: #A7C4A0;
+	padding-left: 5px;
+}
+
+#menulink li:first-child {
+	border-left: 1px solid #8F8389;
+}
+
+#menulink li a{
+	text-decoration: none; /*bez podkreślenia*/
+}
+
+#menulink li a:hover {
+	color: #E6EFE9;
+	cursor: default;
+}

@@ -1,0 +1,82 @@
+body {
+	background-color: #E2E2E2;
+	height: 100%;
+}
+
+* {
+font-family: Calibri, sans-serif;
+}
+
+/* formatowanie tekstu (1) */
+
+h1 {
+	color: #6E7E85;
+	letter-spacing: 5px;
+}
+
+h2 {
+	color: #6E7E85;
+}
+
+
+p {
+	color: #1C0F13;
+	text-indent: 15px;
+}
+
+a {
+	color: #1C0F13;
+}
+
+
+/* kontenery div (5) */
+
+#tresc {
+	max-width: 1000px;
+	margin: auto;
+	height: 100%;
+	padding: 10px 10px;
+	background-color: #D0E4EA;
+}
+
+#menu {
+	float: right;
+	width: 150px;
+	height: 100vh;
+	display: block;
+	padding: 10px 10px;
+	background-color: #BBBAC6;
+}
+
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	border: 1px solid #555;
+}
+
+#menu li {
+	border-bottom: 1px solid #555;
+	background-color: #6E7E85;
+}
+
+#menu li:hover{
+	background-color: #B7CECE;
+}
+
+#menu li:last-child {
+	border-bottom: none;
+}
+
+#menu ul li a {
+	/*display: block;*/
+	color: #FFFCFC;
+	text-decoration: none;
+}
+
+#menu a:hover {
+	color: #BBBAC6;
+	cursor: default;
+}
+
